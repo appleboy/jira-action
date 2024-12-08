@@ -20,7 +20,7 @@ CI/CD integrate with [Jira Data Center][1] on premise
 
 ## Example
 
-### Transition issue to In Progress when branch is pushed
+### Transition issue to "In Progress" when a branch is created
 
 ```yaml
 name: jira integration
@@ -46,7 +46,7 @@ jobs:
           transition: "Start Progress"
 ```
 
-### Transition issue to In Progress when commit is pushed
+### Transition issue to "In Progress" when a commit is pushed
 
 ```yaml
 name: jira integration
@@ -72,7 +72,7 @@ jobs:
           transition: "Start Progress"
 ```
 
-### Transition issue to In Review when PR is opened
+### Transition issue to "In Review" when a PR is opened
 
 ```yaml
 on:
@@ -95,7 +95,7 @@ jobs:
           transition: "Finish Coding"
 ```
 
-### Transition issue to Done when PR is merged
+### Transition issue to "Done" when a PR is merged
 
 ```yaml
 name: jira integration
@@ -119,5 +119,5 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"
-          resolution: "Fixed"
+          resolution: "Done"
 ```
