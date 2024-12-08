@@ -16,3 +16,4 @@ CI/CD integrate with [Jira Data Center][1] on premise
 | ref          | The fully-formed ref of the branch or tag that triggered the workflow run                          |                             |
 | issue_format | matches string that references to an alphanumeric issue, e.g. ABC-1234                             | `([A-Z]{1,10}-[1-9][0-9]*)` |
 | transition   | move issue to a specific status, e.g. Done, Start Progress                                         |                             |
+| resolution   | set resolution of issue, e.g. Done, Fixed                                                          |                             |

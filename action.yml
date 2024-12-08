@@ -19,6 +19,8 @@ inputs:
     default: "([A-Z]{1,10}-[1-9][0-9]*)"
   transition:
     description: "move issue to a specific status, e.g. Done, Start Progress"
+  resolution:
+    description: "set resolution of issue, e.g. Done, Fixed"
 
 runs:
   using: "docker"
