@@ -1,0 +1,24 @@
+name: "Jira Issue Integration"
+description: "Jira Issue Integration"
+author: "Bo-Yi Wu"
+inputs:
+  base_url:
+    description: "Base URL of Jira"
+  insecure:
+    description: "Insecure for SSL"
+  username:
+    description: "username for Basic authentication. This method is only recommended for tools like scripts or bots."
+  password:
+    description: "password for Basic authentication. This method is only recommended for tools like scripts or bots."
+  token:
+    description: "Personal access token (PAT). This method incorporates the user account in the access token."
+  ref:
+    description: "The fully-formed ref of the branch or tag that triggered the workflow run"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  icon: "cloud"
+  color: "blue"
