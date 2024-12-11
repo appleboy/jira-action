@@ -4,6 +4,8 @@ CI/CD integrate with [Jira Data Center][1] on premise
 
 [1]: https://www.atlassian.com/software/jira/data-center
 
+English | [繁體中文](./README.zh-tw.md) | [简体中文](./README.zh-cn.md)
+
 ## Parameters
 
 | Name         | Description                                                                                                  | Default                     |
