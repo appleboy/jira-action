@@ -3,24 +3,24 @@ description: "Jira Issue Integration"
 author: "Bo-Yi Wu"
 inputs:
   base_url:
-    description: "Base URL of Jira"
+    description: "The base URL of the Jira instance."
   insecure:
-    description: "Insecure for SSL"
+    description: "Allow insecure SSL connections."
   username:
-    description: "username for Basic authentication. This method is only recommended for tools like scripts or bots."
+    description: "Username for Basic authentication. Recommended only for scripts or bots."
   password:
-    description: "password for Basic authentication. This method is only recommended for tools like scripts or bots."
+    description: "Password for Basic authentication. Recommended only for scripts or bots."
   token:
-    description: "Personal access token (PAT). This method incorporates the user account in the access token."
+    description: "Personal access token (PAT) for authentication. This method uses the user account associated with the token."
   ref:
-    description: "The fully-formed ref of the branch or tag that triggered the workflow run"
+    description: "The fully-formed reference of the branch or tag that triggered the workflow run."
   issue_format:
-    description: "matches string that references to an alphanumeric issue, e.g. ABC-1234"
+    description: "Pattern to match strings referencing an alphanumeric issue, e.g., ABC-1234."
     default: "([A-Z]{1,10}-[1-9][0-9]*)"
   transition:
-    description: "move issue to a specific status, e.g. Done, Start Progress"
+    description: "Move the issue to a specific status, e.g., Done, In Progress."
   resolution:
-    description: "set resolution of issue, e.g. Done, Fixed"
+    description: "Set the resolution of the issue, e.g., Done, Fixed."
 
 runs:
   using: "docker"
