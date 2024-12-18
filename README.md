@@ -24,6 +24,8 @@ English | [繁體中文](./README.zh-tw.md) | [简体中文](./README.zh-cn.md)
 
 ### Transition issue to "In Progress" when a branch is created
 
+![flow01](./images/flow01.png)
+
 ```yaml
 name: jira integration
 
@@ -49,6 +51,8 @@ jobs:
 ```
 
 ### Transition issue to "In Progress" when a commit is pushed
+
+![flow01](./images/flow01.png)
 
 ```yaml
 name: jira integration
@@ -76,6 +80,8 @@ jobs:
 
 ### Transition issue to "In Review" when a PR is opened
 
+![flow02](./images/flow02.png)
+
 ```yaml
 on:
   pull_request_target:
@@ -98,6 +104,8 @@ jobs:
 ```
 
 ### Transition issue to "Done" when a PR is merged
+
+![flow02](./images/flow02.png)
 
 ```yaml
 name: jira integration
