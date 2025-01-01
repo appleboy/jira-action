@@ -1,4 +1,4 @@
-FROM ghcr.io/appleboy/go-jira:0.0.3
+FROM ghcr.io/appleboy/go-jira:latest
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
