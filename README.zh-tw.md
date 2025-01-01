@@ -19,6 +19,8 @@ CI/CD 與本地的 [Jira Data Center][1] 整合
 | issue_format | 匹配字母數字問題的模式，例如 ABC-1234。                            | `([A-Z]{1,10}-[1-9][0-9]*)` |
 | transition   | 將問題移動到特定狀態，例如完成、進行中。                           |                             |
 | resolution   | 設置問題的解決方案，例如完成、修復。                               |                             |
+| author       | 評論的作者。                                                       |                             |
+| comment      | 要添加到問題的評論。                                               |                             |
 
 ## 範例
 

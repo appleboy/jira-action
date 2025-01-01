@@ -19,6 +19,8 @@ English | [繁體中文](./README.zh-tw.md) | [简体中文](./README.zh-cn.md)
 | issue_format | Pattern to match strings referencing an alphanumeric issue, e.g., ABC-1234.                                  | `([A-Z]{1,10}-[1-9][0-9]*)` |
 | transition   | Move the issue to a specific status, e.g., Done, In Progress.                                                |                             |
 | resolution   | Set the resolution of the issue, e.g., Done, Fixed.                                                          |                             |
+| author       | The author of the comment.                                                                                   |                             |
+| comment      | The comment to add to the issue.                                                                             |                             |
 
 ## Example
 

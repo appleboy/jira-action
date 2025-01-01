@@ -21,6 +21,10 @@ inputs:
     description: "Move the issue to a specific status, e.g., Done, In Progress."
   resolution:
     description: "Set the resolution of the issue, e.g., Done, Fixed."
+  author:
+    description: "The author of the comment."
+  comment:
+    description: "The comment to add to the issue."
 
 runs:
   using: "docker"
