@@ -26,6 +26,8 @@ English | [繁體中文](./README.zh-tw.md) | [简体中文](./README.zh-cn.md)
 
 ### Transition issue to "In Progress" when a branch is created
 
+Transition Jira issue to "In Progress" when a branch is created.
+
 ![flow01](./images/flow01.png)
 
 ```yaml
@@ -54,6 +56,8 @@ jobs:
 
 ### Transition issue to "In Progress" when a commit is pushed
 
+Transition Jira issue to "In Progress" when a commit is pushed.
+
 ![flow01](./images/flow01.png)
 
 ```yaml
@@ -78,21 +82,30 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.head_commit.message }}
           transition: "Start Progress"
+          author: ${{ github.event.head_commit.author.username }}
+          comment: |
+            🧑‍💻 [~${{ github.event.pusher.username }}] push code to repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.ref }}*{color} branch.
+
+            See the detailed information from [commit link|${{ github.event.head_commit.url }}].
+
+            ${{ github.event.head_commit.message }}
 ```
 
-### Transition issue to "In Review" when a PR is opened
+### Transition issue to "Code Review" when a PR is opened
 
 ![flow02](./images/flow02.png)
+
+Transition Jira issue to "Code Review" when a PR is opened.
 
 ```yaml
 on:
   pull_request_target:
-    types: [opened, reopened, edited, synchronize]
+    types: [opened, closed]
 
 jobs:
-  jira-pull-request:
+  open-pull-request:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request_target'
+    if: github.event_name == 'pull_request_target' && github.event.action == 'opened'
     name: transition to in review when pull request is created
     steps:
       - name: transition to in review when pull request is created
@@ -103,11 +116,20 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Finish Coding"
+          author: ${{ github.event.pull_request.user.login }}
+          comment: |
+            🔧 [~${{ github.event.pull_request.user.login }}] {color:#00875A}*${{ github.event.pull_request.state }}*{color} pull request from repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.event.pull_request.head.ref }}*{color} to {color:#00875A}*${{ github.event.pull_request.base.ref }}*{color}.
+
+            See the detailed information from [pull request link|${{ github.event.pull_request.html_url }}].
+
+            Pull request: *${{ github.event.pull_request.title }}*
 ```
 
-### Transition issue to "Done" when a PR is merged
+### Transition issue to "Resolved" when a PR is merged
 
 ![flow02](./images/flow02.png)
+
+Transition issue to "Resolved" when a PR is merged.
 
 ```yaml
 name: jira integration
@@ -124,12 +146,19 @@ jobs:
     name: transition to Merge and Deploy
     steps:
       - name: transition to in review
-        uses: appleboy/jira-action@v0.0.3
+        uses: appleboy/jira-action@v0.1.0
         with:
           base_url: https://xxxxx.com
           insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"
-          resolution: "Done"
+          resolution: "Fixed"
+          author: ${{ github.event.pull_request.merged_by.login }}
+          comment: |
+            🔀 [~${{ github.event.pull_request.merged_by.login }}] {color:#00875A}*merged*{color} pull request from repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.event.pull_request.head.ref }}*{color} branch to {color:#00875A}*${{ github.event.pull_request.base.ref }}*{color} branch.
+
+            See the detailed information from [pull request link|${{ github.event.pull_request.html_url }}].
+
+            Pull request: *${{ github.event.pull_request.title }}*
 ```
