@@ -24,7 +24,11 @@ CI/CD 與本地的 [Jira Data Center][1] 整合
 
 ## 範例
 
-### 當創建分支時將問題轉換為“進行中”
+### 當分支被建立時將問題轉換為「進行中」
+
+當分支被建立時將 Jira 問題轉換為「進行中」。
+
+![flow01](./images/flow01.png)
 
 ```yaml
 name: jira integration
@@ -52,6 +56,10 @@ jobs:
 
 ### 當提交被推送時將問題轉換為「進行中」
 
+當提交被推送時將問題轉換為「進行中」
+
+![flow01](./images/flow01.png)
+
 ```yaml
 name: jira integration
 
@@ -74,19 +82,30 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.head_commit.message }}
           transition: "Start Progress"
+          author: ${{ github.event.head_commit.author.username }}
+          comment: |
+            🧑‍💻 [~${{ github.event.pusher.username }}] push code to repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.ref }}*{color} branch.
+
+            See the detailed information from [commit link|${{ github.event.head_commit.url }}].
+
+            ${{ github.event.head_commit.message }}
 ```
 
 ### 當拉取請求被打開時將問題轉換為「審查中」
 
+![flow02](./images/flow02.png)
+
+當拉取請求被打開時將問題轉換為「審查中」
+
 ```yaml
 on:
   pull_request_target:
-    types: [opened, reopened, edited, synchronize]
+    types: [opened, closed]
 
 jobs:
-  jira-pull-request:
+  open-pull-request:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request_target'
+    if: github.event_name == 'pull_request_target' && github.event.action == 'opened'
     name: transition to in review when pull request is created
     steps:
       - name: transition to in review when pull request is created
@@ -97,9 +116,20 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Finish Coding"
+          author: ${{ github.event.pull_request.user.login }}
+          comment: |
+            🔧 [~${{ github.event.pull_request.user.login }}] {color:#00875A}*${{ github.event.pull_request.state }}*{color} pull request from repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.event.pull_request.head.ref }}*{color} to {color:#00875A}*${{ github.event.pull_request.base.ref }}*{color}.
+
+            See the detailed information from [pull request link|${{ github.event.pull_request.html_url }}].
+
+            Pull request: *${{ github.event.pull_request.title }}*
 ```
 
-### 當拉取請求被合併時將問題轉換為「完成」
+### 當拉取請求被合併時將問題轉換為「已解決」
+
+![flow02](./images/flow02.png)
+
+當拉取請求被合併時將問題轉換為「已解決」
 
 ```yaml
 name: jira integration
@@ -116,12 +146,19 @@ jobs:
     name: transition to Merge and Deploy
     steps:
       - name: transition to in review
-        uses: appleboy/jira-action@v0.0.3
+        uses: appleboy/jira-action@v0.1.0
         with:
           base_url: https://xxxxx.com
           insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"
-          resolution: "Done"
+          resolution: "Fixed"
+          author: ${{ github.event.pull_request.merged_by.login }}
+          comment: |
+            🔀 [~${{ github.event.pull_request.merged_by.login }}] {color:#00875A}*merged*{color} pull request from repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.event.pull_request.head.ref }}*{color} branch to {color:#00875A}*${{ github.event.pull_request.base.ref }}*{color} branch.
+
+            See the detailed information from [pull request link|${{ github.event.pull_request.html_url }}].
+
+            Pull request: *${{ github.event.pull_request.title }}*
 ```
