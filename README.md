@@ -1,6 +1,6 @@
 # jira-action
 
-CI/CD integrate with [Jira Data Center][1] on premise
+GitHub Action for integrating [Jira][1] with your CI/CD pipeline. It allows you to automate the transition of Jira issues based on events in your GitHub repository, such as creating a branch, pushing a commit, opening a pull request, or merging a pull request. This helps streamline your development workflow by keeping your Jira issues up-to-date with the latest changes in your codebase.
 
 [1]: https://www.atlassian.com/software/jira/data-center
 
