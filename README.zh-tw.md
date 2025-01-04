@@ -6,6 +6,14 @@ GitHub Action 用於將 [Jira][1] 整合到您的 CI/CD 流程中。它允許您
 
 [English](./README.md) | 繁體中文 | [简体中文](./README.zh-cn.md)
 
+## 動機
+
+由於目前在線上沒有官方的 Jira API 與 GitHub Action 的整合方案，並且考慮到 Jira 現在有 [Cloud][5] 和 [Data Center][1] 版本，且它們的 API 實現方式不同，本專案將初步專注於 [Data Center][1] 版本。這將使購買企業版的朋友能夠通過 CI/CD 自動整合 Jira 問題狀態的調整。
+
+本專案的動機是提供一個簡單的方法，將 Jira 與 GitHub 或 Gitea Actions 整合，適用於 JIRA Data Center。
+
+[5]: https://developer.atlassian.com/cloud/jira/platform/
+
 ## 參數
 
 | 名稱         | 描述                                                               | 預設值                      |
