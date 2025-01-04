@@ -1,6 +1,6 @@
 # jira-action
 
-CI/CD 与本地的 [Jira Data Center][1] 整合
+GitHub Action 用于将 [Jira][1] 集成到您的 CI/CD 流程中。它允许您根据 GitHub 仓库中的事件（例如创建分支、推送提交、打开拉取请求或合并拉取请求）自动转换 Jira 问题。这有助于通过保持您的 Jira 问题与代码库中的最新变更同步来简化您的开发工作流程。
 
 [1]: https://www.atlassian.com/software/jira/data-center
 
