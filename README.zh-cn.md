@@ -8,11 +8,12 @@ GitHub Action 用于将 [Jira][1] 集成到您的 CI/CD 流程中。它允许您
 
 ## 动机
 
-由于目前在线上没有官方的 Jira API 与 GitHub Action 的整合方案，并且考虑到 Jira 现在有 [Cloud][5] 和 [Data Center][1] 版本，且它们的 API 实现方式不同，本项目将初步专注于 [Data Center][1] 版本。这将使购买企业版的朋友能够通过 CI/CD 自动整合 Jira 问题状态的调整。
+由于目前在线上没有官方的 Jira API 与 GitHub Action 的整合方案，并且考虑到 Jira 现在有 [Cloud][5] 和 [Data Center][6] 版本，且它们的 API 实现方式不同，本项目将初步专注于 [Data Center][6] 版本。这将使购买企业版的朋友能够通过 CI/CD 自动整合 Jira 问题状态的调整。
 
-本项目的动机是提供一个简单的方法，将 Jira 与 GitHub 或 Gitea Actions 整合，适用于 JIRA Data Center。
+本项目的目标是提供一个简单的方法，将 Jira 与 GitHub 或 Gitea Actions 整合，适用于 Jira Data Center。
 
 [5]: https://developer.atlassian.com/cloud/jira/platform/
+[6]: https://developer.atlassian.com/server/jira/platform/
 
 ## 参数
 
