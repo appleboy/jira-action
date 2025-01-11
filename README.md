@@ -61,6 +61,7 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.ref_name }}
           transition: "Start Progress"
+          assignee: ${{ github.actor }}
 ```
 
 ### Transition issue to "In Progress" when a commit is pushed
@@ -91,6 +92,7 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.head_commit.message }}
           transition: "Start Progress"
+          assignee: ${{ github.event.pusher.username }}
           comment: |
             🧑‍💻 [~${{ github.event.pusher.username }}] push code to repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.ref }}*{color} branch.
 
