@@ -91,7 +91,6 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.head_commit.message }}
           transition: "Start Progress"
-          author: ${{ github.event.head_commit.author.username }}
           comment: |
             🧑‍💻 [~${{ github.event.pusher.username }}] push code to repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.ref }}*{color} branch.
 
@@ -125,7 +124,6 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Finish Coding"
-          author: ${{ github.event.pull_request.user.login }}
           comment: |
             🔧 [~${{ github.event.pull_request.user.login }}] {color:#00875A}*${{ github.event.pull_request.state }}*{color} pull request from repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.event.pull_request.head.ref }}*{color} to {color:#00875A}*${{ github.event.pull_request.base.ref }}*{color}.
 
@@ -163,7 +161,6 @@ jobs:
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"
           resolution: "Fixed"
-          author: ${{ github.event.pull_request.merged_by.login }}
           comment: |
             🔀 [~${{ github.event.pull_request.merged_by.login }}] {color:#00875A}*merged*{color} pull request from repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.event.pull_request.head.ref }}*{color} branch to {color:#00875A}*${{ github.event.pull_request.base.ref }}*{color} branch.
 
