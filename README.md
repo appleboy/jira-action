@@ -54,7 +54,7 @@ jobs:
     name: create new branch
     steps:
       - name: transition to in progress on branch event
-        uses: appleboy/jira-action@v0.1.0
+        uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
           insecure: true
@@ -85,7 +85,7 @@ jobs:
     name: transition to in progress on push event
     steps:
       - name: transition to in progress on push event
-        uses: appleboy/jira-action@v0.1.0
+        uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
           insecure: true
@@ -119,7 +119,7 @@ jobs:
     name: transition to in review when pull request is created
     steps:
       - name: transition to in review when pull request is created
-        uses: appleboy/jira-action@v0.1.0
+        uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
           insecure: true
@@ -155,7 +155,7 @@ jobs:
     name: transition to Merge and Deploy
     steps:
       - name: transition to in review
-        uses: appleboy/jira-action@v0.1.0
+        uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
           insecure: true
