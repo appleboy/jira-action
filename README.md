@@ -17,19 +17,19 @@ The goal of this project is to make it easy to integrate Jira with GitHub or Git
 
 ## Parameters
 
-| Name         | Description                                                                                                  | Default                     |
-| ------------ | ------------------------------------------------------------------------------------------------------------ | --------------------------- |
-| base_url     | The base URL of the Jira instance.                                                                           |                             |
-| insecure     | Allow insecure SSL connections.                                                                              |                             |
-| username     | Username for Basic authentication. Recommended only for scripts or bots.                                     |                             |
-| password     | Password for Basic authentication. Recommended only for scripts or bots.                                     |                             |
-| token        | Personal access token (PAT) for authentication. This method uses the user account associated with the token. |                             |
-| ref          | The fully-formed reference of the branch or tag that triggered the workflow run.                             |                             |
-| issue_format | Pattern to match strings referencing an alphanumeric issue, e.g., ABC-1234.                                  | `([A-Z]{1,10}-[1-9][0-9]*)` |
-| transition   | Move the issue to a specific status, e.g., Done, In Progress.                                                |                             |
-| resolution   | Set the resolution of the issue, e.g., Done, Fixed.                                                          |                             |
-| author       | The author of the comment.                                                                                   |                             |
-| comment      | The comment to add to the issue.                                                                             |                             |
+| Name          | Description                                                                                                  | Default                     |
+| ------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| base_url      | The base URL of the Jira instance.                                                                           |                             |
+| insecure      | Allow insecure SSL connections.                                                                              |                             |
+| username      | Username for Basic authentication. Recommended only for scripts or bots.                                     |                             |
+| password      | Password for Basic authentication. Recommended only for scripts or bots.                                     |                             |
+| token         | Personal access token (PAT) for authentication. This method uses the user account associated with the token. |                             |
+| ref           | The fully-formed reference of the branch or tag that triggered the workflow run.                             |                             |
+| issue_pattern | Pattern to match strings referencing an alphanumeric issue, e.g., ABC-1234.                                  | `([A-Z]{1,10}-[1-9][0-9]*)` |
+| transition    | Move the issue to a specific status, e.g., Done, In Progress.                                                |                             |
+| resolution    | Set the resolution of the issue, e.g., Done, Fixed.                                                          |                             |
+| assignee      | Assign the issue to a specific user.                                                                         |                             |
+| comment       | The comment to add to the issue.                                                                             |                             |
 
 ## Example
 

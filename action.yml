@@ -14,15 +14,15 @@ inputs:
     description: "Personal access token (PAT) for authentication. This method uses the user account associated with the token."
   ref:
     description: "The fully-formed reference of the branch or tag that triggered the workflow run."
-  issue_format:
+  issue_pattern:
     description: "Pattern to match strings referencing an alphanumeric issue, e.g., ABC-1234."
     default: "([A-Z]{1,10}-[1-9][0-9]*)"
   transition:
     description: "Move the issue to a specific status, e.g., Done, In Progress."
   resolution:
     description: "Set the resolution of the issue, e.g., Done, Fixed."
-  author:
-    description: "The author of the comment."
+  assignee:
+    description: "Assign the issue to a specific user."
   comment:
     description: "The comment to add to the issue."
 
