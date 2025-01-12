@@ -92,7 +92,7 @@ jobs:
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.head_commit.message }}
           transition: "Start Progress"
-          assignee: ${{ github.event.pusher.username }}
+          assignee: ${{ github.event.head_commit.author.username }}
           comment: |
             🧑‍💻 [~${{ github.event.pusher.username }}] push code to repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.ref }}*{color} branch.
 
