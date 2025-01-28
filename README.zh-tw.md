@@ -171,3 +171,37 @@ jobs:
 
             Pull request: *${{ github.event.pull_request.title }}*
 ```
+
+### 支持 Markdown 格式
+
+```yaml
+name: jira integration
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  jira-merge-request:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged }}
+    name: transition to Merge and Deploy
+    steps:
+      - name: transition to in review
+        uses: appleboy/jira-action@v0.2.0
+        with:
+          base_url: https://xxxxx.com
+          insecure: true
+          token: ${{ secrets.JIRA_TOKEN }}
+          ref: ${{ github.event.pull_request.title }}
+          transition: "Merge and Deploy"
+          resolution: "Fixed"
+          markdown: true
+          comment: |
+            🔀 @${{ github.event.pull_request.merged_by.login }} *merged* pull request from repository **${{ github.repository }}** **${{ github.event.pull_request.head.ref }}** branch to **${{ github.event.pull_request.base.ref }}** branch.
+
+            See the detailed information from [pull request link](${{ github.event.pull_request.html_url }}).
+
+            Pull request: **${{ github.event.pull_request.title }}**
+```

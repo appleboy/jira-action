@@ -164,7 +164,6 @@ jobs:
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"
           resolution: "Fixed"
-          markdown: true
           comment: |
             🔀 [~${{ github.event.pull_request.merged_by.login }}] {color:#00875A}*merged*{color} pull request from repository {color:#ff8b00}*${{ github.repository }}*{color} {color:#00875A}*${{ github.event.pull_request.head.ref }}*{color} branch to {color:#00875A}*${{ github.event.pull_request.base.ref }}*{color} branch.
 
@@ -174,8 +173,6 @@ jobs:
 ```
 
 ### Support markdown format
-
-````yaml
 
 ```yaml
 name: jira integration
@@ -200,10 +197,11 @@ jobs:
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"
           resolution: "Fixed"
+          markdown: true
           comment: |
             🔀 @${{ github.event.pull_request.merged_by.login }} *merged* pull request from repository **${{ github.repository }}** **${{ github.event.pull_request.head.ref }}** branch to **${{ github.event.pull_request.base.ref }}** branch.
 
             See the detailed information from [pull request link](${{ github.event.pull_request.html_url }}).
 
             Pull request: **${{ github.event.pull_request.title }}**
-````
+```
