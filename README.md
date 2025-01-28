@@ -30,6 +30,7 @@ The goal of this project is to make it easy to integrate Jira with GitHub or Git
 | resolution    | Set the resolution of the issue, e.g., Done, Fixed.                                                          |                             |
 | assignee      | Assign the issue to a specific user.                                                                         |                             |
 | comment       | The comment to add to the issue.                                                                             |                             |
+| markdown      | Convert the markdown format to Jira format.                                                                  | `false`                     |
 
 ## Example
 

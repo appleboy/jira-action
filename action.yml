@@ -25,6 +25,9 @@ inputs:
     description: "Assign the issue to a specific user."
   comment:
     description: "The comment to add to the issue."
+  markdown:
+    description: "convert the markdown format to Jira format."
+    default: "false"
 
 runs:
   using: "docker"

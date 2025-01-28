@@ -30,6 +30,7 @@ GitHub Action 用于将 [Jira][1] 集成到您的 CI/CD 流程中。它允许您
 | resolution    | 设置问题的解决方案，例如完成、修复。                               |                             |
 | assignee      | 将问题分配给特定用户。                                             |                             |
 | comment       | 要添加到问题的评论。                                               |                             |
+| markdown      | 将 Markdown 格式转换为 Jira 格式。                                 | `false`                     |
 
 ## 示例
 
