@@ -1,6 +1,6 @@
 # jira-action
 
-GitHub Action for integrating [Jira][1] with your CI/CD pipeline. It allows you to automate the transition of Jira issues based on events in your GitHub repository, such as creating a branch, pushing a commit, opening a pull request, or merging a pull request. This helps streamline your development workflow by keeping your Jira issues up-to-date with the latest changes in your codebase.
+GitHub Action for integrating [Jira][1] with your CI/CD pipeline. It automates the transition of Jira issues based on events in your GitHub repository, such as creating a branch, pushing a commit, opening a pull request, or merging a pull request. This helps streamline your development workflow by keeping your Jira issues up-to-date with the latest changes in your codebase.
 
 [1]: https://www.atlassian.com/software/jira/data-center
 
@@ -8,9 +8,9 @@ English | [繁體中文](./README.zh-tw.md) | [简体中文](./README.zh-cn.md)
 
 ## Motivation
 
-Since there isn't an official Jira API integration available for GitHub Actions, and considering that Jira offers both [Cloud][5] and [Data Center][6] versions with different API implementations, this project will initially focus on the [Data Center][6] API version. This will help those who have the enterprise version to automatically integrate Jira Issue status updates through CI/CD.
+Since there isn't an official Jira API integration available for GitHub Actions, and considering that Jira offers both [Cloud][5] and [Data Center][6] versions with different API implementations, this project will initially focus on the [Data Center][6] API version. This will help those who have the enterprise version automatically integrate Jira Issue status updates through CI/CD.
 
-The goal of this project is to make it easy to integrate Jira with GitHub or Gitea Actions for Jira Data Center.
+The goal of this project is to make it easy to integrate Jira with GitHub or Gitea Actions for Jira Data Center users.
 
 [5]: https://developer.atlassian.com/cloud/jira/platform/
 [6]: https://developer.atlassian.com/server/jira/platform/
@@ -36,7 +36,7 @@ The goal of this project is to make it easy to integrate Jira with GitHub or Git
 
 ### Transition issue to "In Progress" when a branch is created
 
-Transition Jira issue to "In Progress" when a branch is created.
+Transition a Jira issue to "In Progress" when a branch is created.
 
 ![flow01](./images/flow01.png)
 
@@ -67,7 +67,7 @@ jobs:
 
 ### Transition issue to "In Progress" when a commit is pushed
 
-Transition Jira issue to "In Progress" when a commit is pushed.
+Transition a Jira issue to "In Progress" when a commit is pushed.
 
 ![flow01](./images/flow01.png)
 
@@ -106,7 +106,7 @@ jobs:
 
 ![flow02](./images/flow02.png)
 
-Transition Jira issue to "Code Review" when a PR is opened.
+Transition a Jira issue to "Code Review" when a PR is opened.
 
 ```yaml
 on:
@@ -139,7 +139,7 @@ jobs:
 
 ![flow02](./images/flow02.png)
 
-Transition issue to "Resolved" when a PR is merged.
+Transition a Jira issue to "Resolved" when a PR is merged.
 
 ```yaml
 name: jira integration
