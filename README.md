@@ -6,6 +6,12 @@ GitHub Action for integrating [Jira][1] with your CI/CD pipeline. It automates t
 
 English | [繁體中文](./README.zh-tw.md) | [简体中文](./README.zh-cn.md)
 
+- [Integrating Gitea with Jira Software Development Workflow][01]
+- [Gitea 與 Jira 軟體開發流程整合][02]
+
+[01]: https://blog.wu-boy.com/2025/03/gitea-jira-integration-en/
+[02]: https://blog.wu-boy.com/2025/03/gitea-jira-integration-zh-tw/
+
 ## Motivation
 
 Since there isn't an official Jira API integration available for GitHub Actions, and considering that Jira offers both [Cloud][5] and [Data Center][6] versions with different API implementations, this project will initially focus on the [Data Center][6] API version. This will help those who have the enterprise version automatically integrate Jira Issue status updates through CI/CD.

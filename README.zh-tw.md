@@ -6,6 +6,12 @@ GitHub Action 用於將 [Jira][1] 整合到您的 CI/CD 流程中。它允許您
 
 [English](./README.md) | 繁體中文 | [简体中文](./README.zh-cn.md)
 
+- [Integrating Gitea with Jira Software Development Workflow][01]
+- [Gitea 與 Jira 軟體開發流程整合][02]
+
+[01]: https://blog.wu-boy.com/2025/03/gitea-jira-integration-en/
+[02]: https://blog.wu-boy.com/2025/03/gitea-jira-integration-zh-tw/
+
 ## 動機
 
 由於目前在線上沒有官方的 Jira API 與 GitHub Action 的整合方案，並且考慮到 Jira 現在有 [Cloud][5] 和 [Data Center][6] 版本，且它們的 API 實現方式不同，本專案將初步專注於 [Data Center][6] 版本。這將使購買企業版的朋友能夠通過 CI/CD 自動整合 Jira 問題狀態的調整。
