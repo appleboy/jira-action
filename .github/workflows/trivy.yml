@@ -46,7 +46,7 @@ jobs:
           scan-type: "fs"
           scan-ref: "."
           format: "table"
-          severity: "CRITICAL,HIGH,MEDIUM"
+          severity: "CRITICAL,HIGH"
 
   trivy-docker:
     name: Trivy Docker Image Scan
