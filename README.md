@@ -1,5 +1,7 @@
 # jira-action
 
+[![Trivy Security Scan](https://github.com/appleboy/jira-action/actions/workflows/trivy.yml/badge.svg)](https://github.com/appleboy/jira-action/actions/workflows/trivy.yml)
+
 GitHub Action for integrating [Jira][1] with your CI/CD pipeline. It automates the transition of Jira issues based on events in your GitHub repository, such as creating a branch, pushing a commit, opening a pull request, or merging a pull request. This helps streamline your development workflow by keeping your Jira issues up-to-date with the latest changes in your codebase.
 
 [1]: https://www.atlassian.com/software/jira/data-center
