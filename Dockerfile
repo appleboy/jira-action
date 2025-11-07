@@ -1,6 +1,7 @@
 FROM ghcr.io/appleboy/go-jira:0.5.0
 
-COPY --chmod=755 entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod 755 /entrypoint.sh
 
 USER 1001
 
