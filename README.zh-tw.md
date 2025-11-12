@@ -2,6 +2,8 @@
 
 [![Trivy Security Scan](https://github.com/appleboy/jira-action/actions/workflows/trivy.yml/badge.svg)](https://github.com/appleboy/jira-action/actions/workflows/trivy.yml)
 
+> **注意：**此 Action 目前僅支援 **Jira Data Center**，暫不支援 Jira Cloud。
+
 GitHub Action 用於將 [Jira][1] 整合到您的 CI/CD 流程中。它允許您根據 GitHub 儲存庫中的事件（例如創建分支、推送提交、打開拉取請求或合併拉取請求）自動轉換 Jira 問題。這有助於通過保持您的 Jira 問題與代碼庫中的最新變更同步來簡化您的開發工作流程。
 
 [1]: https://www.atlassian.com/software/jira/data-center
