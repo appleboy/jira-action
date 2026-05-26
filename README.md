@@ -13,8 +13,8 @@ English | [繁體中文](./README.zh-tw.md) | [简体中文](./README.zh-cn.md)
 - [Integrating Gitea with Jira Software Development Workflow][01]
 - [Gitea 與 Jira 軟體開發流程整合][02]
 
-[01]: https://blog.wu-boy.com/2025/03/gitea-jira-integration-en/
-[02]: https://blog.wu-boy.com/2025/03/gitea-jira-integration-zh-tw/
+[01]: https://blog.wu-boy.com/2025/03/gitea-integrate-with-jira-issue-tracking-flow-en/
+[02]: https://blog.wu-boy.com/2025/03/gitea-integrate-with-jira-issue-tracking-flow-zh-tw/
 
 ## Motivation
 
