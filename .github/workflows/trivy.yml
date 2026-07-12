@@ -47,6 +47,7 @@ jobs:
           scan-ref: "."
           format: "table"
           severity: "CRITICAL,HIGH"
+          exit-code: "1"
 
   trivy-docker:
     name: Trivy Docker Image Scan
@@ -74,10 +75,15 @@ jobs:
         with:
           sarif_file: "trivy-docker-results.sarif"
 
+      # Gated at CRITICAL only: the base image still carries Go stdlib HIGHs that
+      # can only be cleared by an upstream go-jira rebuild. They remain visible
+      # in the Security tab via the SARIF upload above.
       - name: Run Trivy vulnerability scanner on Docker image (table output)
         uses: aquasecurity/trivy-action@v0.36.0
+        if: always()
         with:
           scan-type: "image"
           image-ref: "jira-action:latest"
           format: "table"
-          severity: "CRITICAL,HIGH"
+          severity: "CRITICAL"
+          exit-code: "1"
