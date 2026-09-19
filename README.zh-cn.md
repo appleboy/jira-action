@@ -42,6 +42,8 @@ GitHub Action 用于将 [Jira][1] 集成到您的 CI/CD 流程中。它允许您
 | comment       | 要添加到问题的评论。                                               |                             |
 | markdown      | 将 Markdown 格式转换为 Jira 格式。                                 | `false`                     |
 
+默认会验证 TLS 证书。如果 Jira 使用自签名证书，建议优先配置受信任的证书；只有在明确接受跳过证书验证的风险时，才设置 `insecure: true`。
+
 ## 示例
 
 ### 当分支被创建时将问题转换为「进行中」
@@ -68,7 +70,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.ref_name }}
           transition: "Start Progress"
@@ -87,7 +88,7 @@ name: jira integration
 on:
   push:
     branches:
-      - "*"
+      - "**"
 
 jobs:
   jira-push-event:
@@ -99,7 +100,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.head_commit.message }}
           transition: "Start Progress"
@@ -133,7 +133,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Finish Coding"
@@ -169,7 +168,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"
@@ -202,7 +200,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"

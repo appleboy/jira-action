@@ -42,6 +42,8 @@ The goal of this project is to make it easy to integrate Jira with GitHub or Git
 | comment       | The comment to add to the issue.                                                                             |                             |
 | markdown      | Convert the markdown format to Jira format.                                                                  | `false`                     |
 
+TLS certificate verification is enabled by default. For a Jira server with a self-signed certificate, prefer configuring a trusted certificate. Set `insecure: true` only if you explicitly accept skipping certificate verification.
+
 ## Example
 
 ### Transition issue to "In Progress" when a branch is created
@@ -68,7 +70,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.ref_name }}
           transition: "Start Progress"
@@ -87,7 +88,7 @@ name: jira integration
 on:
   push:
     branches:
-      - "*"
+      - "**"
 
 jobs:
   jira-push-event:
@@ -99,7 +100,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.head_commit.message }}
           transition: "Start Progress"
@@ -133,7 +133,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Finish Coding"
@@ -169,7 +168,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"
@@ -202,7 +200,6 @@ jobs:
         uses: appleboy/jira-action@v0.2.0
         with:
           base_url: https://xxxxx.com
-          insecure: true
           token: ${{ secrets.JIRA_TOKEN }}
           ref: ${{ github.event.pull_request.title }}
           transition: "Merge and Deploy"

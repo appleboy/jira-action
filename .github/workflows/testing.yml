@@ -1,0 +1,41 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Check entrypoint syntax
+        run: sh -n entrypoint.sh
+
+      - name: Build Docker image
+        run: docker build -t jira-action:test .
+
+      - name: Test the container against mock Jira
+        run: python3 tests/smoke.py --image jira-action:test
+
+  release-config:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Check GoReleaser configuration
+        uses: goreleaser/goreleaser-action@v7
+        with:
+          distribution: goreleaser
+          version: v2.18.2
+          args: check

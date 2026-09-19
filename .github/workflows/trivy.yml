@@ -30,24 +30,22 @@ jobs:
         with:
           scan-type: "fs"
           scan-ref: "."
-          format: "sarif"
-          output: "trivy-results.sarif"
+          format: "json"
+          output: "trivy-results.json"
           severity: "CRITICAL,HIGH"
+
+      - name: Convert repository scan to SARIF
+        run: trivy convert --format sarif --output trivy-results.sarif trivy-results.json
 
       - name: Upload Trivy results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v4
-        if: always()
+        if: always() && hashFiles('trivy-results.sarif') != ''
         with:
           sarif_file: "trivy-results.sarif"
 
-      - name: Run Trivy vulnerability scanner (table output)
-        uses: aquasecurity/trivy-action@v0.36.0
-        with:
-          scan-type: "fs"
-          scan-ref: "."
-          format: "table"
-          severity: "CRITICAL,HIGH"
-          exit-code: "1"
+      - name: Report and gate repository vulnerabilities
+        if: always() && hashFiles('trivy-results.json') != ''
+        run: trivy convert --format table --severity CRITICAL,HIGH --exit-code 1 trivy-results.json
 
   trivy-docker:
     name: Trivy Docker Image Scan
@@ -65,25 +63,22 @@ jobs:
         with:
           scan-type: "image"
           image-ref: "jira-action:latest"
-          format: "sarif"
-          output: "trivy-docker-results.sarif"
+          format: "json"
+          output: "trivy-docker-results.json"
           severity: "CRITICAL,HIGH"
+
+      - name: Convert image scan to SARIF
+        run: trivy convert --format sarif --output trivy-docker-results.sarif trivy-docker-results.json
 
       - name: Upload Trivy Docker results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v4
-        if: always()
+        if: always() && hashFiles('trivy-docker-results.sarif') != ''
         with:
           sarif_file: "trivy-docker-results.sarif"
 
       # Gated at CRITICAL only: the base image still carries Go stdlib HIGHs that
       # can only be cleared by an upstream go-jira rebuild. They remain visible
       # in the Security tab via the SARIF upload above.
-      - name: Run Trivy vulnerability scanner on Docker image (table output)
-        uses: aquasecurity/trivy-action@v0.36.0
-        if: always()
-        with:
-          scan-type: "image"
-          image-ref: "jira-action:latest"
-          format: "table"
-          severity: "CRITICAL"
-          exit-code: "1"
+      - name: Report and gate image vulnerabilities
+        if: always() && hashFiles('trivy-docker-results.json') != ''
+        run: trivy convert --format table --severity CRITICAL --exit-code 1 trivy-docker-results.json
