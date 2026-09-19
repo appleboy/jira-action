@@ -1,4 +1,4 @@
-FROM ghcr.io/appleboy/go-jira:0.7.0
+FROM ghcr.io/appleboy/go-jira:0.15.1
 
 USER root
 COPY entrypoint.sh /entrypoint.sh

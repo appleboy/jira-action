@@ -140,7 +140,8 @@ class SmokeTests(unittest.TestCase):
 
     def test_authentication_failure_is_propagated(self):
         result = self.run_action({"INPUT_TOKEN": "invalid-test-token"})
-        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        # go-jira 0.15.1 distinguishes authentication failures from runtime errors.
+        self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
         self.assertIn("error getting self", result.stderr)
         self.assertEqual(self.server.requests, [("GET", "/rest/api/2/myself")])
         self.assertEqual(self.server.comments, [])
