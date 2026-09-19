@@ -26,5 +26,5 @@ changelog:
       order: 4
     - title: "Documentation updates"
       regexp: ^.*?docs?(\(.+\))??!?:.+$
-      order: 4
+      order: 5
     - title: Others
